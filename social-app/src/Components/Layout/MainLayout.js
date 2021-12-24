@@ -1,10 +1,8 @@
 import React from 'react';
-import ListFollow from '../Follow/ListFollow';
 import Header from '../Header/Header';
 import ListMenuBar from '../ListMenuBar/ListMenuBar';
 import Navbar from '../Navbar/Navbar';
 import LeftSidebarLayout from './LeftSidebarLayout';
-import RightSidebarLayout from './RightSidebarLayout';
 
 export default function MainLayout({ children }) {
   return (
@@ -21,10 +19,16 @@ export default function MainLayout({ children }) {
             <ListMenuBar />
           </LeftSidebarLayout>
           {children}
+          {/* <ContentLayout>
+            {children}
+          </ContentLayout>
 
           <RightSidebarLayout>
-            <ListFollow />
-          </RightSidebarLayout>
+            <div>
+              chu ngoc thai
+            </div>
+          </RightSidebarLayout> */}
+          
         </div>
       </div>
     </div>

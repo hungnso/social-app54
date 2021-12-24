@@ -78,7 +78,7 @@ export default function PostDetail() {
           <h4>Post Detail</h4>
         </div>
         <div className='flex-grow-1 overflow-auto'>
-          <div className="mb-3" >
+          <div className="mb-3 bg-white p-2 rounded-3" >
             <PostCard post={post} commentCount={commentCount} />
           </div>
         </div>

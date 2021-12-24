@@ -3,8 +3,6 @@ import request from "../../Api/request"
 
 export default function UserComment({ userId }) {
 
-  console.log(userId)
-
   const [profile, setProfile] = React.useState({})
 
   const fetchUser = async () => {
@@ -12,12 +10,8 @@ export default function UserComment({ userId }) {
       url: `/profile/${userId}`,
       method: 'GET',
     })
-
     setProfile(res.data)
-    console.log(res)
   }
-
-  console.log('render')
 
   React.useEffect(() => {
     fetchUser()

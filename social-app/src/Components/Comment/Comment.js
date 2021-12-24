@@ -13,7 +13,7 @@ export default function Comment({ comment }) {
             alt="user"
           />
         </div>
-        <div className="flex-grow-1 p-2 rounded me-2" style={{ backgroundColor: '#F0F2F5' }}>
+        <div className="flex-grow-1 p-2 me-2 bg-white rounded-3" >
           <div><b>{comment.userId?.username}</b></div>
           <p className="mb-1 text-break">{comment.content}</p>
           <small style={{ color: 'gray' }}>{momentDisplay(comment.createdAt)}</small>

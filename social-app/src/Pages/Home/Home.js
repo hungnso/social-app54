@@ -38,7 +38,9 @@ export default function Home() {
           })}
         </div>
       </ContentLayout>
-
+      <RightSidebarLayout>
+        <ListFollow />
+      </RightSidebarLayout>
     </MainLayout>
   )
 }

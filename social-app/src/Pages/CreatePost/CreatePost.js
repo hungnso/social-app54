@@ -1,11 +1,10 @@
 import React from "react";
 import ContentLayout from "../../Components/Layout/ContentLayout";
-import LeftSidebarLayout from "../../Components/Layout/LeftSidebarLayout";
 import MainLayout from "../../Components/Layout/MainLayout";
 import RightSidebarLayout from "../../Components/Layout/RightSidebarLayout";
 import Ckeditor from "./Ckeditor"
 import request from "../../Api/request"
-import axios from 'axios'
+import ListFollow from '../../Components/Follow/ListFollow';
 
 export default function CreatePost() {
 
@@ -90,6 +89,9 @@ export default function CreatePost() {
           <button className='btn btn-primary mt-2' onClick={handleClickCreatepost}>Create</button>
         </div>
       </ContentLayout>
+      <RightSidebarLayout>
+        <ListFollow />
+      </RightSidebarLayout>
     </MainLayout>
   )
 }

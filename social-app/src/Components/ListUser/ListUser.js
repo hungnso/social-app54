@@ -58,7 +58,7 @@ export default function ListUser() {
 
   const renderUser = (users) => {
     return (
-      <div className="flex-grow-1 overflow-auto ">
+      <div className="flex-grow-1 overflow-auto">
         {users.map(user => {
           return (
             <div className='mb-2 d-flex mx-5' key={user.userId._id}>
@@ -78,7 +78,6 @@ export default function ListUser() {
       return renderUser(users)
     } else {
       if (usersDebounce.length === 0) {
-        console.log('render')
         return <p className="text-center">Friend not found</p>
       } else {
         return renderUser(usersDebounce)
@@ -92,9 +91,9 @@ export default function ListUser() {
       <div className='text-center my-2'>
         <h4>Add Friends</h4>
       </div>
-      <div className='flex-grow-1 d-flex flex-column'>
+      <div className='flex-grow-1 d-flex flex-column overflow-auto'>
         <form
-          className="mx-5 mb-3"
+          className="mx-5 mb-3 "
           onSubmit={(e) => { e.preventDefault() }}
         >
           <div className="form-group">
