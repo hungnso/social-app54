@@ -90,11 +90,6 @@ export default function CreatePost() {
           <button className='btn btn-primary mt-2' onClick={handleClickCreatepost}>Create</button>
         </div>
       </ContentLayout>
-      <RightSidebarLayout>
-        <div>
-          chu ngoc thai
-        </div>
-      </RightSidebarLayout>
     </MainLayout>
   )
 }

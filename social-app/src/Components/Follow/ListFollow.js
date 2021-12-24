@@ -9,7 +9,7 @@ export default function ListFollow() {
 
   const [follows, setFollows] = React.useState([])
 
-  console.log(follows)
+  // console.log(follows)
 
   const fetchFollows = async () => {
     const res = await request({
@@ -44,11 +44,11 @@ export default function ListFollow() {
 
   return (
     <div>
-      <div>Friends ({friendsCount})</div>
+      <div className=' mt-2'>Friends ({friendsCount})</div>
 
       {follows.map(follow => {
         return (
-          <div className='mb-1 d-flex' key={follow._id}>
+          <div className='mb-1 d-flex mt-2' key={follow._id}>
             <FollowItem
               follow={follow}
               handleClickUnfollow={handleClickUnfollow}

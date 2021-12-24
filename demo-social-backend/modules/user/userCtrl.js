@@ -38,6 +38,13 @@ const getAllUser = async (req, res) => {
   });
 }
 
+
+
+
+
+
+
+
 //   updateUser: async (req, res) => {
 //     try {
 //       const updateUserData = req.body;

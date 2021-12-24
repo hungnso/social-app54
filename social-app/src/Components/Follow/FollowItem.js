@@ -4,7 +4,7 @@ export default function FollowItem({ follow, handleClickUnfollow }) {
 
   return (
     <>
-      <div className='mx-1 p-1 d-flex w-100 rounded' style={{ backgroundColor: '#F0F2F5' }}>
+      <div className='mx-1 p-1 d-flex w-100 rounded' >
         <div className=" me-1">
           <img
             className='rounded-circle border border-white'

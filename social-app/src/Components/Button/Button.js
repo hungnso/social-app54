@@ -29,10 +29,10 @@ export default function Button({ postId, like, commentCount }) {
       })
     }
   }
-  const cls = likes?.includes(user._id) ? 'btn btn-light text-primary w-50' : 'btn btn-light w-50'
+  const cls = likes?.includes(user._id) ? 'btn btn-white text-primary w-50' : 'btn btn-white w-50'
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 border-top">
       <button
         className={cls}
         onClick={handleClickLike}
@@ -40,7 +40,7 @@ export default function Button({ postId, like, commentCount }) {
         {<Icon.ThumbsUp />} {likes?.length}
       </button>
       <Link to={`/posts/${postId}`}>
-        <button className='btn btn-light w-50'>
+        <button className='btn btn-white w-50'>
           {<Icon.MessageSquare />} {commentCount}
         </button>
       </Link>

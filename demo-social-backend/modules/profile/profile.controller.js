@@ -15,6 +15,26 @@ const createProfile = async (req, res) => {
   })
 }
 
+const getProfileByUserId = async (req, res) => {
+
+  const { userId } = req.params
+
+  const user = await ProfileModel
+    .findOne({ userId })
+    .populate({
+      path: 'userId',
+      select: 'username avatar'
+    })
+
+
+  res.send({
+    success: true,
+    data: user,
+  });
+}
+
+
 module.exports = {
-  createProfile
+  createProfile,
+  getProfileByUserId
 };

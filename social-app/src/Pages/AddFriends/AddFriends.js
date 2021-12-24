@@ -17,9 +17,6 @@ export default function AddFriends() {
 
   return (
     <FriendsLayout>
-      <LeftSidebarLayout>
-        <ListFollow />
-      </LeftSidebarLayout>
       <RightLargeSidebarLayout>
         <ListUser />
       </RightLargeSidebarLayout>

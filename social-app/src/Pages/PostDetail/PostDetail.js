@@ -6,13 +6,15 @@ import RightSidebarLayout from "../../Components/Layout/RightSidebarLayout";
 import request from "../../Api/request";
 import PostCard from "../../Components/PostCard/PostCard";
 import Comment from '../../Components/Comment/Comment'
-import PostUserDetail from "../../Components/User/PostUserDetail";
+import UserDetail from "../../Components/User/UserDetail";
 import FormComment from "../../Components/FormComment/FormComment"
 import { AuthContext } from '../../App'
+import UserComment from '../../Components/User/UserComment'
 
 export default function PostDetail() {
   const [post, setPost] = React.useState({})
   const [comments, setComments] = React.useState([])
+  const [profile, setProfile] = React.useState({})
 
   const { user } = React.useContext(AuthContext)
 
@@ -51,13 +53,12 @@ export default function PostDetail() {
     fetchComments()
   }, [])
 
-  console.log(post)
   const handleAddComment = async (value) => {
     const incRes = await request({
       url: `/posts/${postId}/incCommentPost`,
       method: 'PUT',
     })
-    
+
     const datapost = { ...incRes.data, userId: user }
     setPost(datapost)
 
@@ -77,14 +78,14 @@ export default function PostDetail() {
           <h4>Post Detail</h4>
         </div>
         <div className='flex-grow-1 overflow-auto'>
-          <div className="mb-3">
+          <div className="mb-3" >
             <PostCard post={post} commentCount={commentCount} />
           </div>
         </div>
       </ContentLayout>
       <RightSidebarLayout>
         <div className='text-center my-2'>
-          <PostUserDetail post={post} />
+          {/* <UserComment profile={profile} /> */}
         </div>
         <div className='flex-grow-1 overflow-auto'>
           {comments.map(comment => {
