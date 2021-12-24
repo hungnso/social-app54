@@ -68,8 +68,9 @@ export default function ListUser() {
               />
             </div>
           )
-        })}
-      </div>
+        })
+        }
+      </div >
     )
   }
 

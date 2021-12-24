@@ -1,13 +1,13 @@
 import React from "react";
 import Button from '../../Components/Button/Button'
-import UserDetail from "../User/UserDetail";
+import UserTimeCreateAt from "../User/UserTimeCreateAt";
 
 export default function PostCard({ post }) {
 
   return (
     <>
       <div >
-        <UserDetail post={post} />
+        <UserTimeCreateAt post={post} />
         <div className='me-1 '>
           <div
             className='mb-2  text-break'

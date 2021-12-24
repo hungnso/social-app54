@@ -6,7 +6,7 @@ import RightSidebarLayout from "../../Components/Layout/RightSidebarLayout";
 import request from "../../Api/request";
 import PostCard from "../../Components/PostCard/PostCard";
 import Comment from '../../Components/Comment/Comment'
-import UserDetail from "../../Components/User/UserDetail";
+import UserTimeCreateAt from "../../Components/User/UserTimeCreateAt";
 import FormComment from "../../Components/FormComment/FormComment"
 import { AuthContext } from '../../App'
 import UserComment from '../../Components/User/UserComment'
@@ -25,7 +25,7 @@ export default function PostDetail() {
 
   const fetchPosts = async () => {
     const res = await request({
-      url: `/posts/${postId}`,
+      url: `/posts/post/${postId}`,
       method: 'GET',
     })
 

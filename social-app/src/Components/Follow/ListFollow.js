@@ -48,15 +48,17 @@ export default function ListFollow() {
       <div className='flex-grow-1 overflow-auto'>
         {follows.map(follow => {
           return (
-            <div className='mb-1 d-flex mt-2' key={follow._id}>
-              <FollowItem
-                follow={follow}
-                handleClickUnfollow={handleClickUnfollow}
-              />
+            <div key={follow._id}>
+              <div className='mb-1 d-flex mt-2' >
+                <FollowItem
+                  follow={follow}
+                  handleClickUnfollow={handleClickUnfollow}
+                />
+              </div>
             </div>
           )
         })}
       </div>
-      </>
+    </>
   )
 }

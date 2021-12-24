@@ -9,31 +9,36 @@ import request from "../../Api/request"
 export default function UserDetail() {
   const params = useParams();
   const { userId } = params;
+  console.log(userId);
 
   const [posts, setPosts] = React.useState([]);
 
   const fetchPostsByUserId = async () => {
     const res = await request({
-      url: `/posts/${userId}`,
+      url: `/posts/user/${userId}`,
       method: 'GET',
     })
     setPosts(res.data)
   }
 
-  React.useEffect(()=> {
+  React.useEffect(() => {
     fetchPostsByUserId()
   }, [userId])
+
+  const postsNumber = React.useMemo(() => {
+    return posts.length;
+  })
+
 
   return (
     <FriendsLayout>
       <RightLargeSidebarLayout>
         <div className='overflow-auto'>
-          <ProfileUser userId={userId} />
+          <ProfileUser userId={userId} postsNumber={postsNumber} />
           <div className='col-8 mx-auto'>
             <ListPosts posts={posts} />
           </div>
         </div>
-
       </RightLargeSidebarLayout>
     </FriendsLayout>
   )

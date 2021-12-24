@@ -1,12 +1,11 @@
 import React from "react";
-import request from "../../Api/request"
+import request from "../../Api/request";
+import * as Icon from 'react-feather';
+import { AuthContext } from "../../App"
 
-export default function ProfileUser({ userId }) {
-
+export default function ProfileUser({ userId, postsNumber }) {
+  const { user } = React.useContext(AuthContext)
   const [profile, setProfile] = React.useState({})
-
-  // console.log(profile)
-
   const fetchProfile = async () => {
     const res = await request({
       url: `/profile/${userId}`,
@@ -18,7 +17,7 @@ export default function ProfileUser({ userId }) {
 
   React.useEffect(() => {
     fetchProfile();
-  }, [])
+  }, [userId])
 
   return (
     <div className='my-2 d-flex justify-content-center align-items-center py-4 bg-white rounded-3'>
@@ -31,9 +30,12 @@ export default function ProfileUser({ userId }) {
         />
       </div>
       <div>
-        <div><h4>{profile.userId?.username}</h4></div>
+        <div className="d-flex justify-content-between">
+          <h4>{profile.userId?.username}</h4>
+          {user._id === profile.userId?._id ? <button className="btn btn-light"><Icon.Edit3 /> Edit Profile</button> : ''}
+        </div>
         <div>
-          <span className='me-5'><b>{profile.postCount || 30}</b> Posts</span>
+          <span className='me-5'><b>{postsNumber}</b> Posts</span>
           <span className='me-5'><b>{profile.followerCount}</b> Follower</span>
           <span className='me-5'><b>{profile.followingCount}</b> Following</span>
         </div>

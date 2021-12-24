@@ -8,7 +8,9 @@ export default function ListMenuBar() {
 
   return (
     <div className='mb-2 d-flex justify-content-start flex-column overflow-auto' >
-      <UserComment userId={user._id} />
+      <div>
+        <UserComment userId={user._id} />
+      </div>
       <MenuItem />
     </div>
   )
