@@ -63,6 +63,25 @@ const getPostId = async (req, res) => {
     data: post
   })
 }
+
+const getPostByUserId = async (req, res) => {
+  const { userId } = req.params
+
+  const post = await PostModel
+    .find({userId})
+    .populate({
+      path: 'userId',
+      select: 'username avatar'
+    })
+
+  res.send({
+    success: true,
+    data: post
+  })
+}
+
+
+
 // updatePost: async (req, res) => {
 //   try {
 //     const { content, images } = req.body;
@@ -132,8 +151,6 @@ const incCommentPost = async (req, res) => {
     { new: true }
   )
 
-  console.log(updateIncCommentPost)
-
   res.send({
     success: true,
     data: updateIncCommentPost
@@ -197,5 +214,6 @@ module.exports = {
   likePost,
   unLikePost,
   getPostId,
-  incCommentPost
+  incCommentPost,
+  getPostByUserId
 }

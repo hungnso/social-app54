@@ -5,7 +5,7 @@ export default function MenuItem() {
   const links = [
     {
       src: 'https://www.facebook.com/rsrc.php/v3/yx/r/-XF4FQcre_i.png',
-      value: 'Friend'
+      value: 'Friends'
     },
     {
       src: 'https://www.facebook.com/rsrc.php/v3/yr/r/2uPlV4oORjU.png',
@@ -13,7 +13,7 @@ export default function MenuItem() {
     },
     {
       src: 'https://www.facebook.com/rsrc.php/v3/yD/r/mk4dH3FK0jT.png',
-      value: 'Group'
+      value: 'Groups'
     },
     {
       src: 'https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/YF1bztyGuX-.png',

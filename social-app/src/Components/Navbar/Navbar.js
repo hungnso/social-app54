@@ -30,7 +30,7 @@ export default function Navbar() {
         </button>
         <ul className="dropdown-menu">
           <li><Link className='dropdown-item' to="/login">Sigout <Icon.ChevronRight className='float-end text-secondary' /></Link></li>
-          <li><Link className='dropdown-item' to="#">Profile <Icon.ChevronRight className='float-end text-secondary' /></Link></li>
+          <li><Link className='dropdown-item' to={`/user/${user._id}`}>Profile <Icon.ChevronRight className='float-end text-secondary' /></Link></li>
         </ul>
       </div>
     </div>

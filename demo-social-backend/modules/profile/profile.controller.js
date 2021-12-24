@@ -23,7 +23,7 @@ const getProfileByUserId = async (req, res) => {
     .findOne({ userId })
     .populate({
       path: 'userId',
-      select: 'username avatar'
+      select: 'username avatar email'
     })
 
 

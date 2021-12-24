@@ -10,6 +10,7 @@ import request from "./Api/request"
 import CreatePost from './Pages/CreatePost/CreatePost';
 import PostDetail from './Pages/PostDetail/PostDetail';
 import AddFriends from './Pages/AddFriends/AddFriends';
+import UserDetail from './Pages/UserDetail/UserDetail';
 
 export const AuthContext = React.createContext();
 
@@ -60,6 +61,7 @@ function App() {
         <Route path='/create-post' element={<CreatePost />} />
         <Route path='/posts/:postId' element={<PostDetail />} />
         <Route path='/friends' element={<AddFriends />} />
+        <Route path='/user/:userId' element={<UserDetail />} />
       </Routes>
     </AuthContext.Provider>
   );

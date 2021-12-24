@@ -4,6 +4,7 @@ const postCtrl = require("./postCtrl");
 
 router.post('/create', auth, postCtrl.createPost)
 router.get('/', auth, postCtrl.getAllPosts)
+router.get('/:userId', auth, postCtrl.getPostByUserId)
 router.get('/:postId', auth, postCtrl.getPostId)
 router.put('/:postId/like', auth, postCtrl.likePost)
 router.put('/:postId/unLike', auth, postCtrl.unLikePost)
