@@ -1,8 +1,8 @@
 import React from "react";
-import { AuthContext } from '../../App'
+import useAuth from "../../hooks/useAuth";
 
 export default function FormComment({ postId, handleAddComment }) {
-  const { user } = React.useContext(AuthContext)
+  const user = useAuth();
   const [value, setValue] = React.useState('')
 
   const handleChangeInput = (value) => {

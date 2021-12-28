@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import * as Icon from 'react-feather';
-import { AuthContext } from '../../App';
-import request from "../../Api/request"
+import request from "../../Api/request";
+import useAuth from '../../hooks/useAuth';
 
 export default function Button({ postId, like, commentCount }) {
 
   const [likes, setLikes] = React.useState([])
-  const { user } = React.useContext(AuthContext)
+  const user = useAuth();
 
   React.useEffect(() => {
     setLikes(like)

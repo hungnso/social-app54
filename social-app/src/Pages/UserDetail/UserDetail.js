@@ -4,12 +4,14 @@ import FriendsLayout from "../../Components/Layout/FriendsLayout"
 import RightLargeSidebarLayout from "../../Components/Layout/RightLargeSidebarLayout"
 import ListPosts from "../../Components/ListPosts/ListPosts";
 import ProfileUser from "../../Components/ProfileUser/ProfileUser";
-import request from "../../Api/request"
+import request from "../../Api/request";
+import { Tabs, Tab } from 'react-bootstrap'
+import ListFollow from "../../Components/Follow/ListFollow";
+import ListFollower from "../../Components/Follow/ListFollower";
 
 export default function UserDetail() {
   const params = useParams();
   const { userId } = params;
-  console.log(userId);
 
   const [posts, setPosts] = React.useState([]);
 
@@ -36,7 +38,17 @@ export default function UserDetail() {
         <div className='overflow-auto'>
           <ProfileUser userId={userId} postsNumber={postsNumber} />
           <div className='col-8 mx-auto'>
-            <ListPosts posts={posts} />
+            <Tabs defaultActiveKey="Posts" id="uncontrolled-tab-example" className="mb-3 d-flex justify-content-center">
+              <Tab eventKey="Posts" title="Posts" >
+                <ListPosts posts={posts} />
+              </Tab>
+              <Tab eventKey="Follower" title="Follower">
+                <ListFollower userId={userId} />
+              </Tab>
+              <Tab eventKey="following" title="Following">
+                <ListFollow userId={userId} />
+              </Tab>
+            </Tabs>
           </div>
         </div>
       </RightLargeSidebarLayout>

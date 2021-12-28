@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import * as Icon from 'react-feather';
-import { AuthContext } from '../../App'
+import useAuth from '../../hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/userSlice';
+import {useNavigate} from 'react-router-dom';
+
 
 export default function Navbar() {
-
-  const { user } = React.useContext(AuthContext)
+  const dispatch = useDispatch();
+  const user = useAuth()
+  const navigate = useNavigate();
 
   return (
     <div className="navbar navbar-dark bg-primary align-items-start d-flex flex-column h-100">
@@ -29,7 +34,16 @@ export default function Navbar() {
           <Icon.Settings />
         </button>
         <ul className="dropdown-menu">
-          <li><Link className='dropdown-item' to="/login">Sigout <Icon.ChevronRight className='float-end text-secondary' /></Link></li>
+          {/* <li><Link className='dropdown-item' to="/login">Sigout <Icon.ChevronRight className='float-end text-secondary' /></Link></li> */}
+          <li>
+            <a
+              className='dropdown-item'
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(logout());
+                navigate('/login'); 
+              }}
+            >Sigout <Icon.ChevronRight className='float-end text-secondary' /></a></li>
           <li><Link className='dropdown-item' to={`/user/${user._id}`}>Profile <Icon.ChevronRight className='float-end text-secondary' /></Link></li>
         </ul>
       </div>

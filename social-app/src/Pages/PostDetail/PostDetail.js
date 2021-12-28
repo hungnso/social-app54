@@ -9,14 +9,16 @@ import Comment from '../../Components/Comment/Comment'
 import UserTimeCreateAt from "../../Components/User/UserTimeCreateAt";
 import FormComment from "../../Components/FormComment/FormComment"
 import { AuthContext } from '../../App'
-import UserComment from '../../Components/User/UserComment'
+import UserComment from '../../Components/User/UserComment';
+import useAuth from '../../hooks/useAuth';
+
 
 export default function PostDetail() {
   const [post, setPost] = React.useState({})
   const [comments, setComments] = React.useState([])
   const [profile, setProfile] = React.useState({})
+  const user = useAuth()
 
-  const { user } = React.useContext(AuthContext)
 
   const params = useParams();
 

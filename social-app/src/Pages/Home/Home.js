@@ -6,8 +6,9 @@ import request from "../../Api/request";
 import PostCard from '../../Components/PostCard/PostCard';
 import ListFollow from '../../Components/Follow/ListFollow';
 import ListPosts from "../../Components/ListPosts/ListPosts";
-
+import useAuth from '../../hooks/useAuth'
 export default function Home() {
+  const user = useAuth();
   const [posts, setPosts] = React.useState([])
   const fetchPosts = async () => {
     const res = await request({
@@ -34,7 +35,7 @@ export default function Home() {
         </div>
       </ContentLayout>
       <RightSidebarLayout>
-        <ListFollow />
+        <ListFollow userId={user._id} />
       </RightSidebarLayout>
     </MainLayout>
   )

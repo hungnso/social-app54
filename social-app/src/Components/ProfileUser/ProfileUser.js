@@ -1,10 +1,10 @@
 import React from "react";
 import request from "../../Api/request";
 import * as Icon from 'react-feather';
-import { AuthContext } from "../../App"
+import useAuth from '../../hooks/useAuth';
 
 export default function ProfileUser({ userId, postsNumber }) {
-  const { user } = React.useContext(AuthContext)
+  const user = useAuth();
   const [profile, setProfile] = React.useState({})
   const fetchProfile = async () => {
     const res = await request({

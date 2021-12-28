@@ -4,12 +4,11 @@ import UserComment from '../../Components/User/UserComment'
 import MenuItem from './MenuItem'
 
 export default function ListMenuBar() {
-  const { user } = React.useContext(AuthContext);
 
   return (
     <div className='mb-2 d-flex justify-content-start flex-column overflow-auto' >
       <div>
-        <UserComment userId={user._id} />
+        <UserComment />
       </div>
       <MenuItem />
     </div>

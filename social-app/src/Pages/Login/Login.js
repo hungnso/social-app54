@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import request from "../../Api/request";
+import { useDispatch } from "react-redux";
+import { login } from '../../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 const schema = yup.object({
   email: yup.string().email().required(),
@@ -11,27 +15,23 @@ const schema = yup.object({
 }).required();
 
 export default function Register() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
+    const { email, password } = data
     try {
-      const res = await request({
-        method: 'POST',
-        url: '/auth/login',
-        data: data
-      })
-      const token = res.data.token
-      localStorage.setItem('token', token);
-      alert(res.message)
-
+      await dispatch(login({ email, password })).unwrap()
+      navigate('/')
     } catch (error) {
-      alert('Đăng nhập thất bại!')
+      alert('Fail Login!')
     }
   }
 
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center" >
       <div className='col-6'>
-        <img src={require('../../img/anh.png')} className="w-75"/>
+        <img src={require('../../img/anh.png')} className="w-75" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="col-md-4 col-6">
         <h2 className="text-center">Login</h2>

@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-import request from "../../Api/request"
+import request from "../../Api/request";
+import useAuth from '../../hooks/useAuth';
 
-export default function UserComment({ userId }) {
 
+export default function UserComment() {
+  const user = useAuth();
+  const userId = user._id;
   const [profile, setProfile] = React.useState({})
 
   const fetchUser = async () => {

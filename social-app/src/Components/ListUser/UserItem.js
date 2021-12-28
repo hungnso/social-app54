@@ -18,7 +18,7 @@ export default function UserItem({ user, handleClickfollow }) {
 
   return (
     <>
-      <div className='p-1 d-flex w-100 bg-white rounded-3 justify-content-between'>
+      <div className='d-flex bg-white w-100 justify-content-between'>
         <Link to={`/user/${user.userId._id}`}  className='text-dark text-decoration-none'>
           <div className='d-flex'>
             <div className=" me-1">

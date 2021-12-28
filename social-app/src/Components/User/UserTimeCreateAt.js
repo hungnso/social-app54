@@ -4,7 +4,7 @@ import momentDisplay from '../../lib/moment';
 
 export default function UserTimeCreateAt({ post }) {
   return (
-    <Link to={`/user/${post.userId._id}`} className='text-dark text-decoration-none'>
+    <Link to={`/user/${post.userId?._id}`} className='text-dark text-decoration-none'>
       <div className='mb-2 d-flex justify-content-start'>
         <div className="overflow-hidden me-1">
           <img

@@ -58,10 +58,10 @@ export default function ListUser() {
 
   const renderUser = (users) => {
     return (
-      <div className="flex-grow-1 overflow-auto">
+      <div className="flex-grow-1 overflow-auto list-group">
         {users.map(user => {
           return (
-            <div className='mb-2 d-flex mx-5' key={user.userId._id}>
+            <div className='mb-1 d-flex mx-5 list-group-item rounded-3' key={user.userId._id}>
               <UserItem
                 user={user}
                 handleClickfollow={handleClickfollow}
