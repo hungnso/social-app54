@@ -35,7 +35,7 @@ export default function Home() {
         </div>
       </ContentLayout>
       <RightSidebarLayout>
-        <ListFollow userId={user._id} />
+        <ListFollow userId={user._id} item='home' />
       </RightSidebarLayout>
     </MainLayout>
   )

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import * as Icon from 'react-feather';
 import useAuth from '../../hooks/useAuth';
 
-export default function FollowItem({ follow, handleClickUnfollow, userId }) {
+export default function FollowItem({ follow, handleClickUnfollow, userId, item = 'following' }) {
   const user = useAuth();
   return (
     <>
@@ -34,12 +34,15 @@ export default function FollowItem({ follow, handleClickUnfollow, userId }) {
               >
                 <Icon.MessageCircle />
               </button>
-              <button
-                className='btn p-1 m-1'
-                onClick={() => { handleClickUnfollow(follow._id) }}
-              >
-                <Icon.UserMinus />
-              </button>
+              {item === 'following' ? (
+                <button
+                  className='btn p-1 m-1'
+                  onClick={() => { handleClickUnfollow(follow._id) }}
+                >
+                  <Icon.UserMinus />
+                </button>
+              ) : ''}
+
             </div>
           ) : ''}
 

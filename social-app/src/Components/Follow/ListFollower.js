@@ -37,6 +37,7 @@ export default function ListFollowers({ userId }) {
                 follow={follow}
                 // handleClickUnfollow={handleClickUnfollow}
                 userId={userId}
+                item='follower'
               />
             </div>
           )

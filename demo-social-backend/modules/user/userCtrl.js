@@ -1,5 +1,6 @@
 const UserModel = require("../auth/auth");
 const ProfileModel = require('../profile/profile');
+const FollowModel = require('../follow/follow')
 const slugify = require('slugify')
 
 const searchUser = async (req, res) => {
@@ -23,9 +24,9 @@ const searchUser = async (req, res) => {
 
 const getAllUser = async (req, res) => {
 
-  const users = await ProfileModel
+  const users = await FollowModel
     .find()
-    .sort({ followerCount: -1 })
+    .sort({ followers: -1 })
     .limit(10)
     .populate({
       path: 'userId',

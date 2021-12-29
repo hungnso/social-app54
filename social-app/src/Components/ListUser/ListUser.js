@@ -5,8 +5,8 @@ import { useDebounce } from 'use-debounce';
 
 export default function ListUser() {
 
-  const [users, setUsers] = React.useState([])
-  const [text, setText] = React.useState('')
+  const [users, setUsers] = React.useState([]);
+  const [text, setText] = React.useState('');
   const [debouncedValue] = useDebounce(text, 500);
   const [usersDebounce, setUsersDebounce] = React.useState([])
 
@@ -16,6 +16,8 @@ export default function ListUser() {
       method: 'GET',
     })
     if (res.data) {
+      
+      console.log(res)
       const allUsers = res.data
       setUsers(allUsers)
     }
@@ -34,7 +36,6 @@ export default function ListUser() {
     })
     if (res.data) {
       const unFollow = res.data.following
-      console.log(res)
       // setFollows(unFollow)
 
       // console.log(userId)

@@ -2,7 +2,7 @@ import React from "react";
 import FollowItem from './FollowItem';
 import request from "../../Api/request";
 
-export default function ListFollow({ userId }) {
+export default function ListFollow({ userId, item }) {
 
   const [follows, setFollows] = React.useState([])
 
@@ -48,6 +48,7 @@ export default function ListFollow({ userId }) {
                 follow={follow}
                 handleClickUnfollow={handleClickUnfollow}
                 userId={userId}
+                item={item}
               />
             </div>
           )

@@ -16,7 +16,6 @@ const createNewFollowUser = async (req, res) => {
 }
 
 const getFollowId = async (req, res) => {
-  // const { user } = req;
   const { userId } = req.params
 
   const followId = await FollowModel

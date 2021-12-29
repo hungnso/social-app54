@@ -7,8 +7,6 @@ const profileSchema = new mongoose.Schema(
       ref: "user"
     },
     slugUsername: { type: String, required: true },
-    followerCount: { type: Number, default: 0 },
-    followingCount: { type: Number, default: 0 },
     birthDay: { type: String, default: '16/7/1996' },
     gender: { type: String, default: "male" },
     mobile: { type: String, default: "" },

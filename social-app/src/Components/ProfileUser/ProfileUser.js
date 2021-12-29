@@ -5,7 +5,9 @@ import useAuth from '../../hooks/useAuth';
 
 export default function ProfileUser({ userId, postsNumber }) {
   const user = useAuth();
-  const [profile, setProfile] = React.useState({})
+  const [profile, setProfile] = React.useState({});
+  const [followers, setFollowers] = React.useState([]);
+  const [following, setFollowing] = React.useState([]);
   const fetchProfile = async () => {
     const res = await request({
       url: `/profile/${userId}`,
@@ -18,6 +20,26 @@ export default function ProfileUser({ userId, postsNumber }) {
   React.useEffect(() => {
     fetchProfile();
   }, [userId])
+
+  const fetchFollowId = async () => {
+    const res = await request({
+      url: `/follows/${userId}`,
+      method: 'GET'
+    })
+    setFollowers(res.data.followers)
+    setFollowing(res.data.following)
+  }
+
+  React.useEffect(() => {
+    fetchFollowId();
+  }, [userId])
+
+  const follow = React.useMemo(() => {
+    return {
+      followerCount: followers.length,
+      followingCount: following.length
+    }
+  }, [followers, following])
 
   return (
     <div className='my-2 d-flex justify-content-center align-items-center py-4 bg-white rounded-3'>
@@ -36,8 +58,8 @@ export default function ProfileUser({ userId, postsNumber }) {
         </div>
         <div>
           <span className='me-5'><b>{postsNumber}</b> Posts</span>
-          <span className='me-5'><b>{profile.followerCount}</b> Follower</span>
-          <span className='me-5'><b>{profile.followingCount}</b> Following</span>
+          <span className='me-5'><b>{follow.followerCount}</b> Follower</span>
+          <span className='me-5'><b>{follow.followingCount}</b> Following</span>
         </div>
         <div>
           <span className='me-5'><b>BirthDay:</b> {profile.birthDay || '16/07/1996'}</span>
