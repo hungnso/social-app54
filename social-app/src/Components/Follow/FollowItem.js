@@ -42,9 +42,23 @@ export default function FollowItem({ follow, handleClickUnfollow, userId, item =
                   <Icon.UserMinus />
                 </button>
               ) : ''}
-
             </div>
-          ) : ''}
+          ) : (
+            <div>
+              <button
+                className='btn p-1 m-1'
+              // onClick={() => { handleClickUnfollow(follow._id) }}
+              >
+                <Icon.MessageCircle />
+              </button>
+              <button
+                className='btn p-1 m-1'
+              // onClick={() => { handleClickUnfollow(follow._id) }}
+              >
+                <Icon.UserMinus />
+              </button>
+            </div>
+          )}
 
         </div>
       </div>

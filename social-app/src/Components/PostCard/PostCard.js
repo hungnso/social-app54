@@ -1,5 +1,5 @@
 import React from "react";
-import Button from '../../Components/Button/Button'
+import ButtonHome from '../Button/ButtonHome'
 import UserTimeCreateAt from "../User/UserTimeCreateAt";
 
 export default function PostCard({ post }) {
@@ -16,7 +16,7 @@ export default function PostCard({ post }) {
             <img src={post.images} alt='anh' className='w-100' />
           </div>
         </div>
-        <Button
+        <ButtonHome
           postId={post._id}
           like={post.likes}
           commentCount={post.commentCount}

@@ -4,7 +4,7 @@ import * as Icon from 'react-feather';
 import request from "../../Api/request";
 import useAuth from '../../hooks/useAuth';
 
-export default function Button({ postId, like, commentCount }) {
+export default function ButtonHome({ postId, like, commentCount }) {
 
   const [likes, setLikes] = React.useState([])
   const user = useAuth();

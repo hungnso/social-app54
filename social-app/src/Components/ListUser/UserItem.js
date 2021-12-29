@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import request from "../../Api/request";
 import useAuth from "../../hooks/useAuth";
 
-export default function UserItem({ user, handleClickfollow }) {
+export default function UserItem({ user, handleClickfollow, handleClickUnfollow }) {
   const userMe = useAuth();
   const [story, setStory] = React.useState('')
-
   const profileUSer = async () => {
     const res = await request({
       url: `/profile/${user.userId._id}`,
@@ -23,13 +22,6 @@ export default function UserItem({ user, handleClickfollow }) {
     profileUSer()
   }, [user])
 
-  const handleClickUnfollow = async () => {
-    const res = await request({
-      url: 'follows/unfollow',
-      method: 'PUT',
-      data: { userId: user.userId._id }
-    })
-  }
 
 
   const renderButton = () => {
