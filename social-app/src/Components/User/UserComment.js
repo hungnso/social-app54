@@ -5,36 +5,35 @@ import useAuth from '../../hooks/useAuth';
 
 
 export default function UserComment() {
-  const user = useAuth();
-  const userId = user._id;
-  const [profile, setProfile] = React.useState({})
+  const userMe = useAuth();
+  const [follow, setFollow] = React.useState({})
 
   const fetchUser = async () => {
     const res = await request({
-      url: `/profile/${userId}`,
+      url: `/follows/${userMe._id}`,
       method: 'GET',
     })
-    setProfile(res.data)
+    setFollow(res.data)
   }
 
   React.useEffect(() => {
     fetchUser()
-  }, [userId])
+  }, [])
 
   return (
-    <Link to={`/user/${userId}`} className='text-decoration-none text-dark'>
+    <Link to={`/user/${userMe._id}`} className='text-decoration-none text-dark'>
       <div className='mt-3 px-3 py-2 d-flex justify-content-start align-items-center'>
         <div className="overflow-hidden me-1">
           <img
             className='rounded-circle border border-white'
             style={{ width: '40px', height: '40px', objectFit: 'cover' }}
-            src={profile.userId?.avatar}
+            src={follow.userId?.avatar}
             alt="user"
           />
         </div>
         <div>
-          <div><b>{profile.userId?.username}</b></div>
-          <small style={{ color: 'gray' }}>{profile.followerCount} followers</small>
+          <div><b>{follow.userId?.username}</b></div>
+          <small style={{ color: 'gray' }}>{follow.followers?.length} followers</small>
         </div>
       </div>
     </Link>

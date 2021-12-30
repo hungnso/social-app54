@@ -7,7 +7,6 @@ export default function ListUser() {
 
   const [users, setUsers] = React.useState([]);
   const [text, setText] = React.useState('');
-  const [statusFollow, setStatusFollow] = React.useState(false);
   const [debouncedValue] = useDebounce(text, 500);
   const [usersDebounce, setUsersDebounce] = React.useState([])
 
@@ -24,30 +23,7 @@ export default function ListUser() {
 
   React.useEffect(() => {
     fetchUser()
-  }, [statusFollow])
-
-
-  const handleClickfollow = async (userId) => {
-    const res = await request({
-      url: 'follows/following',
-      method: 'PUT',
-      data: { userId }
-    })
-    if (res.data) {
-      setStatusFollow(!statusFollow)
-    }
-  }
-
-  const handleClickUnfollow = async (userId) => {
-    const res = await request({
-      url: 'follows/unfollow',
-      method: 'PUT',
-      data: { userId }
-    })
-    if (res.data) {
-      setStatusFollow(!statusFollow)
-    }
-  }
+  }, [])
 
   const fetchDebounce = async () => {
     const res = await request({
@@ -72,8 +48,7 @@ export default function ListUser() {
             <div className='mb-1 d-flex mx-5 list-group-item rounded-3' key={user.userId._id}>
               <UserItem
                 user={user}
-                handleClickfollow={handleClickfollow}
-                handleClickUnfollow={handleClickUnfollow}
+                page='listuser'
               />
             </div>
           )

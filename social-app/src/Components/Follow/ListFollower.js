@@ -2,13 +2,13 @@ import React from "react";
 import FollowItem from './FollowItem';
 import request from "../../Api/request";
 
-export default function ListFollowers({ userId }) {
+export default function ListFollowers({ userIdProfile, page }) {
 
   const [followers, setFollowers] = React.useState([])
 
   const fetchFollows = async () => {
     const res = await request({
-      url: `/follows/${userId}`,
+      url: `/follows/${userIdProfile}`,
       method: 'GET',
     })
     if (res.data) {
@@ -19,12 +19,11 @@ export default function ListFollowers({ userId }) {
 
   React.useEffect(() => {
     fetchFollows()
-  }, [])
+  }, [userIdProfile])
 
   const friendsCount = React.useMemo(() => {
     return followers.length
   }, [followers])
-
 
   return (
     <>
@@ -35,9 +34,7 @@ export default function ListFollowers({ userId }) {
             <div key={follow._id} className='list-group-item mb-1 rounded-3'>
               <FollowItem
                 follow={follow}
-                // handleClickUnfollow={handleClickUnfollow}
-                userId={userId}
-                item='follower'
+                page={page}
               />
             </div>
           )

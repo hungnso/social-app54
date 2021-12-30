@@ -24,6 +24,10 @@ const getFollowId = async (req, res) => {
     })
     .sort({ follower: -1 })
     .populate({
+      path: "userId",
+      select: "username avatar",
+    })
+    .populate({
       path: "following",
       select: "username avatar",
     })
@@ -32,13 +36,11 @@ const getFollowId = async (req, res) => {
       select: "username avatar",
     });
 
-
   res.send({
     success: true,
     data: followId
   })
 }
-
 
 
 // createfollow:
@@ -166,5 +168,5 @@ module.exports = {
   createNewFollowUser,
   follow,
   getFollowId,
-  unfollow
+  unfollow,
 };

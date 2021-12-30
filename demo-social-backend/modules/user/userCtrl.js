@@ -24,10 +24,10 @@ const searchUser = async (req, res) => {
 
 const getAllUser = async (req, res) => {
 
-  const users = await FollowModel
+  const users = await ProfileModel
     .find()
     .sort({ followers: -1 })
-    .limit(10)
+    .limit(5)
     .populate({
       path: 'userId',
       select: 'username avatar'

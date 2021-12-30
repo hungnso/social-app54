@@ -31,7 +31,6 @@ export default function UserDetail() {
     return posts.length;
   })
 
-
   return (
     <FriendsLayout>
       <RightLargeSidebarLayout>
@@ -43,10 +42,16 @@ export default function UserDetail() {
                 <ListPosts posts={posts} />
               </Tab>
               <Tab eventKey="Follower" title="Follower">
-                <ListFollower userId={userId} />
+                <ListFollower
+                  userIdProfile={userId}
+                  page='userDetail-follower'
+                />
               </Tab>
               <Tab eventKey="following" title="Following">
-                <ListFollow userId={userId} />
+                <ListFollow
+                  userIdProfile={userId}
+                  page='userDetail-following'
+                />
               </Tab>
             </Tabs>
           </div>

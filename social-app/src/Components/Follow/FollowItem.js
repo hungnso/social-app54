@@ -1,10 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import * as Icon from 'react-feather';
 import useAuth from '../../hooks/useAuth';
+import ButtonAdd from "../Button/ButtonAdd";
+import request from "../../Api/request";
 
-export default function FollowItem({ follow, handleClickUnfollow, userId, item = 'following' }) {
-  const user = useAuth();
+export default function FollowItem({ follow, page, userIdProfile }) {
+  const userMe = useAuth();
+  const [statusFollow, setStatusFollow] = React.useState(false);
+
+  const [following, setFollowing] = React.useState([])
+  const fetchFollowId = async () => {
+    const res = await request({
+      url: `/follows/${userMe._id}`,
+      method: 'GET',
+    })
+
+    if (res.data) {
+      setFollowing(res.data.following)
+    }
+  }
+
+  React.useEffect(() => {
+    fetchFollowId()
+  }, [statusFollow])
+
+  
+  const handleClickfollow = async (userId) => {
+    const res = await request({
+      url: 'follows/following',
+      method: 'PUT',
+      data: { userId }
+    })
+    if (res.data) {
+      setStatusFollow(!statusFollow)
+    }
+  }
+
+  const handleClickUnfollow = async (userId) => {
+    const res = await request({
+      url: 'follows/unfollow',
+      method: 'PUT',
+      data: { userId }
+    })
+    if (res.data) {
+      setStatusFollow(!statusFollow)
+    }
+  }
+
   return (
     <>
       <div className='d-flex rounded justify-content-between'>
@@ -26,40 +68,13 @@ export default function FollowItem({ follow, handleClickUnfollow, userId, item =
           </Link>
         </div>
         <div>
-          {userId === user._id ? (
-            <div>
-              <button
-                className='btn p-1 m-1'
-              // onClick={() => { handleClickUnfollow(follow._id) }}
-              >
-                <Icon.MessageCircle />
-              </button>
-              {item === 'following' ? (
-                <button
-                  className='btn p-1 m-1'
-                  onClick={() => { handleClickUnfollow(follow._id) }}
-                >
-                  <Icon.UserMinus />
-                </button>
-              ) : ''}
-            </div>
-          ) : (
-            <div>
-              <button
-                className='btn p-1 m-1'
-              // onClick={() => { handleClickUnfollow(follow._id) }}
-              >
-                <Icon.MessageCircle />
-              </button>
-              <button
-                className='btn p-1 m-1'
-              // onClick={() => { handleClickUnfollow(follow._id) }}
-              >
-                <Icon.UserMinus />
-              </button>
-            </div>
-          )}
-
+          <ButtonAdd
+            page={page}
+            userId={follow._id}
+            following={following}
+            handleClickfollow={handleClickfollow}
+            handleClickUnfollow={handleClickUnfollow}
+          />
         </div>
       </div>
     </>

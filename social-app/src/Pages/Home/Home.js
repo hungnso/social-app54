@@ -8,7 +8,7 @@ import ListFollow from '../../Components/Follow/ListFollow';
 import ListPosts from "../../Components/ListPosts/ListPosts";
 import useAuth from '../../hooks/useAuth'
 export default function Home() {
-  const user = useAuth();
+  const userMe = useAuth();
   const [posts, setPosts] = React.useState([])
   const fetchPosts = async () => {
     const res = await request({
@@ -35,7 +35,7 @@ export default function Home() {
         </div>
       </ContentLayout>
       <RightSidebarLayout>
-        <ListFollow userId={user._id} item='home' />
+        <ListFollow userIdProfile={userMe._id} page='home-following' />
       </RightSidebarLayout>
     </MainLayout>
   )
