@@ -16,7 +16,6 @@ export default function EditProfile() {
       method: 'GET',
     })
     setProfile(res.data)
-    console.log(res.data)
   }
 
   const fetchUser = async () => {
@@ -25,7 +24,6 @@ export default function EditProfile() {
       method: 'GET',
     })
     setUserMe(res.data)
-    console.log(res.data)
   }
 
   React.useEffect(() => {

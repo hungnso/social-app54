@@ -15,8 +15,8 @@ export default function ProfileItemEdit({
   const [status, setStatus] = React.useState('hiden')
 
   const EditPassword = () => {
-    const [errorMessage, setErrorMessage] = React.useState('')
-    const [successMessage, setSuccessMessage] = React.useState('')
+    const [message, setMessage] = React.useState('')
+    // const [successMessage, setSuccessMessage] = React.useState('')
     const schema = yup.object({
       currentPassword: yup.string().min(6).required(),
       newPassword: yup.string().min(6).required(),
@@ -32,11 +32,11 @@ export default function ProfileItemEdit({
           data
         })
         if(res.data){
-          setSuccessMessage('Password change successfully!')
+          setMessage('Password change successfully!')
         }
       } catch (error) {
         console.log('render')
-        setErrorMessage('Password change failed')
+        setMessage('Password change failed')
       }
     }
 
@@ -76,8 +76,8 @@ export default function ProfileItemEdit({
             {errors.cfPassword && <div className="invalid-feedback">{errors.cfPassword?.message}</div>}
           </div>
         </div>
-        <div className="text-danger mb-2">{errorMessage}</div>
-        <div className="text-success mb-2">{successMessage}</div>
+        <div className={message==='Password change successfully!'? 'text-success mb-2':"text-danger mb-2"}>{message}</div>
+        {/* <div className="text-success mb-2">{successMessage}</div> */}
         <div>
           <button className="btn btn-primary">Save Changes</button>
           <span
