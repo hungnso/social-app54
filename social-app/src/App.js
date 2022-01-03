@@ -16,6 +16,7 @@ import useAuth from './hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import GuestPage from './Pages/RulePage/GuestPage';
 import PrivatePage from './Pages/RulePage/PrivatePage';
+import EditProfile from './Pages/EditProfile/Editprofile';
 
 function App() {
   const status = useSelector(state => state.user.status)
@@ -42,6 +43,7 @@ function App() {
         <Route path='/posts/:postId' element={<PostDetail />} />
         <Route path='/friends' element={<AddFriends />} />
         <Route path='/user/:userId' element={<UserDetail />} />
+        <Route path='/edit-profile' element={<EditProfile />} />
       </Route>
     </Routes>
   );

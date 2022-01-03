@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import request from "../../Api/request";
 import * as Icon from 'react-feather';
 import useAuth from '../../hooks/useAuth';
@@ -54,7 +55,7 @@ export default function ProfileUser({ userId, postsNumber }) {
       <div>
         <div className="d-flex justify-content-between">
           <h4>{profile.userId?.username}</h4>
-          {user._id === profile.userId?._id ? <button className="btn btn-light"><Icon.Edit3 /> Edit Profile</button> : ''}
+          {user._id === profile.userId?._id ? <Link to='/edit-profile'><button className="btn btn-light"><Icon.Edit3 /> Edit Profile</button></Link> : ''}
         </div>
         <div>
           <span className='me-5'><b>{postsNumber}</b> Posts</span>

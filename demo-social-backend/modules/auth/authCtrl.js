@@ -79,8 +79,73 @@ const getUser = async (req, res) => {
   })
 }
 
+const getMe = async (req, res) => {
+  const { user } = req
+  const userMe = await UserModel.findById(user._id)
+
+  res.send({
+    success: true,
+    data: {
+      _id: userMe._id,
+      username: userMe.username,
+      avatar: userMe.avatar
+    }
+  })
+}
+
+const updateUser = async (req, res) => {
+  const { user } = req
+  const dataUpdate = req.body
+  const newUserUpdate = await UserModel.findByIdAndUpdate(
+    user._id,
+    dataUpdate,
+    { new: true }
+  )
+
+  res.send({
+    success: true,
+    data: newUserUpdate
+  })
+}
+
+const updatePassword = async (req, res) => {
+  const { user } = req
+  const { currentPassword, newPassword } = req.body
+  const existedUser = await UserModel.findById(user._id)
+  if (!existedUser) {
+    throw new HttpError(`Account don't exist`, 400);
+  }
+
+  const hashPassword = existedUser.password
+
+  const verifyPassword = bcrypt.compareSync(currentPassword, hashPassword)
+  if (!verifyPassword) {
+    throw new HttpError('Invalid Password', 400);
+  }
+
+  const salt = bcrypt.genSaltSync(10);
+  const newHashPassword = bcrypt.hashSync(newPassword, salt)
+  const dataUpdate = {
+    password: newHashPassword
+  }
+
+  const newUserUpdate = await UserModel.findByIdAndUpdate(
+    user._id,
+    dataUpdate,
+    { new: true }
+  )
+
+  res.send({
+    success: true,
+    data: newUserUpdate
+  })
+}
+
 module.exports = {
   register,
   login,
-  getUser
+  getUser,
+  updateUser,
+  getMe,
+  updatePassword
 };

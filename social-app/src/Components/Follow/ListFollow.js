@@ -31,7 +31,7 @@ export default function ListFollow({ userIdProfile, page }) {
       <div className='flex-grow-1 overflow-auto list-group'>
         {follows.map(follow => {
           return (
-            <div key={follow._id} className='list-group-item mb-1 rounded-3'>
+            <div key={follow._id} className='list-group-item px-1 py-0 mb-1 rounded-3'>
               <FollowItem
                 follow={follow}
                 page={page}

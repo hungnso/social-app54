@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import ButtonAdd from "../Button/ButtonAdd";
 import request from "../../Api/request";
 
-export default function FollowItem({ follow, page, userIdProfile }) {
+export default function FollowItem({ follow, page }) {
   const userMe = useAuth();
   const [statusFollow, setStatusFollow] = React.useState(false);
 
@@ -49,7 +49,7 @@ export default function FollowItem({ follow, page, userIdProfile }) {
 
   return (
     <>
-      <div className='d-flex rounded justify-content-between'>
+      <div className='d-flex rounded justify-content-between align-items-center'>
         <div>
           <Link to={`/user/${follow._id}`} className='text-dark text-decoration-none'>
             <div className='d-flex align-items-center'>

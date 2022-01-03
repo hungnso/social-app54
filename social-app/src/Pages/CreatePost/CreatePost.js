@@ -3,11 +3,12 @@ import ContentLayout from "../../Components/Layout/ContentLayout";
 import MainLayout from "../../Components/Layout/MainLayout";
 import RightSidebarLayout from "../../Components/Layout/RightSidebarLayout";
 import Ckeditor from "./Ckeditor"
-import request from "../../Api/request"
+import request from "../../Api/request";
 import ListFollow from '../../Components/Follow/ListFollow';
+import useAuth from '../../hooks/useAuth';
 
 export default function CreatePost() {
-
+  const userMe = useAuth();
   const [image, setImage] = React.useState();
   const [text, setText] = React.useState('');
 
@@ -90,7 +91,7 @@ export default function CreatePost() {
         </div>
       </ContentLayout>
       <RightSidebarLayout>
-        <ListFollow />
+        <ListFollow userIdProfile={userMe._id} page='home-following' />
       </RightSidebarLayout>
     </MainLayout>
   )

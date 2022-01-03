@@ -33,8 +33,27 @@ const getProfileByUserId = async (req, res) => {
   });
 }
 
+const updateProfile = async (req, res) => {
+
+  const { user } = req
+  const dataUpdate = req.body
+
+  const userUpdate = await ProfileModel
+    .findOneAndUpdate(
+      { userId: user._id },
+      dataUpdate,
+      { new: true }
+    )
+
+  res.send({
+    success: true,
+    data: userUpdate,
+  });
+}
+
 
 module.exports = {
   createProfile,
-  getProfileByUserId
+  getProfileByUserId,
+  updateProfile
 };
