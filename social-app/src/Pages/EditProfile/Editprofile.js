@@ -118,6 +118,7 @@ export default function EditProfile() {
                 <label
                  htmlFor='uploadAvatar'
                  className='text-white'
+                 style={{cursor: 'pointer'}}
                  ><Icon.Camera/></label>
                 <input
                   id='uploadAvatar'
