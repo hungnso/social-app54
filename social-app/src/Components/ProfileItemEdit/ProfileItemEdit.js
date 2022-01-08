@@ -160,7 +160,7 @@ export default function ProfileItemEdit({
           <span
             className="btn text-primary"
             onClick={() => setStatus('show')}
-          >
+          >   
             Edit
           </span>
         </>
@@ -176,9 +176,9 @@ export default function ProfileItemEdit({
   }
 
   return (
-    <div className={status === 'show' ? 'd-flex px-3 py-2 container bg-white' : 'd-flex px-3 py-2 container'}>
+    <div className={status === 'show' ? 'd-flex px-3 py-2 container bg-white' : 'd-flex align-items-center px-3 py-2 container border-bottom'}>
       <div className='col-3'><b>{title}</b></div>
-      <div className='col-9 d-flex'>
+      <div className='col-9 d-flex align-items-center'>
         {renderItem()}
       </div>
     </div>

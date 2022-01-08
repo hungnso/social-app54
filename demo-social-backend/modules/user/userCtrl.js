@@ -26,7 +26,7 @@ const getAllUser = async (req, res) => {
 
   const users = await ProfileModel
     .find()
-    .sort({ followers: -1 })
+    // .sort({ followers: -1 })
     .limit(5)
     .populate({
       path: 'userId',

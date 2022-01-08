@@ -6,7 +6,7 @@ import ListMenuBar from "../ListMenuBar/ListMenuBar"
 
 export default function FriendsLayout({ children }) {
   return (
-    <div className="vh-100 d-flex" style={{ backgroundColor: '#F0F2F5' }}>
+    <div className="vh-100 d-flex  overflow-hidden" style={{ backgroundColor: '#F0F2F5' }}>
       <div>
         <Navbar />
       </div>
