@@ -65,7 +65,7 @@ async function main() {
   httpServer.listen(process.env.PORT || 9000, (err) => {
     if (err) throw err;
 
-    console.log(`Server connected ${port}`);
+    console.log(`Server connected`);
   });
 }
 
