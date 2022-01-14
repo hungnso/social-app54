@@ -62,9 +62,7 @@ async function main() {
   app.use("/api/users", UserRouter);
   app.use(errorHandler);
 
-  const port = process.env.PORT || 9000;
-
-  httpServer.listen(port, (err) => {
+  httpServer.listen(process.env.PORT || 9000, (err) => {
     if (err) throw err;
 
     console.log(`Server connected ${port}`);
