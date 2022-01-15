@@ -3,11 +3,11 @@ import ButtonHome from "../Button/ButtonHome";
 import UserTimeCreateAt from "../User/UserTimeCreateAt";
 import HeaderPost from "./HeaderPost/HeaderPost";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, handleDeletePost }) {
   return (
     <>
       <div>
-        <HeaderPost post={post} />
+        <HeaderPost post={post} handleDeletePost={handleDeletePost} />
         <div className="me-1 ">
           <div
             className="mb-2  text-break"
@@ -19,7 +19,7 @@ export default function PostCard({ post }) {
         </div>
         <ButtonHome
           post={post}
-          like={post.likes}
+          like={post?.likes}
           commentCount={post.commentCount}
         />
       </div>

@@ -2,10 +2,14 @@ import React from "react";
 import UserTimeCreateAt from "../../User/UserTimeCreateAt";
 import EditPost from "../EditPost";
 
-const HeaderPost = ({ post }) => {
+const HeaderPost = ({ post, posts, handleDeletePost }) => {
   return (
     <div>
-      <UserTimeCreateAt post={post} />
+      <UserTimeCreateAt
+        post={post}
+        posts={posts}
+        handleDeletePost={handleDeletePost}
+      />
     </div>
   );
 };

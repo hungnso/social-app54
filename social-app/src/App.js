@@ -22,11 +22,15 @@ import socketClient from "./socket";
 function App() {
   const status = useSelector((state) => state.user.status);
   const user = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     socketClient.emit("join-user", user);
+
+    return () => {
+      socketClient.off("join-user");
+    };
   }, [user]);
   React.useEffect(() => {
     dispatch(fetchUserInfo());

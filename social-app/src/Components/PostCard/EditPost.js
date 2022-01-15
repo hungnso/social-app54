@@ -3,11 +3,9 @@ import request from "../../Api/request";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-const EditPost = ({ post, handleDeletePost }) => {
-  const baseUrl = process.env.BASE_URL;
-  console.log(handleDeletePost);
+const EditPost = ({ post, posts, handleDeletePost }) => {
+  let baseUrl = process.env.BASES_URL;
   let navigate = useNavigate();
-  // const { user, socket } = useSelector((state) => state);
   const dispatch = useDispatch();
   const user = useAuth();
 
@@ -30,7 +28,7 @@ const EditPost = ({ post, handleDeletePost }) => {
             </div>
             <div
               className="dropdown-item"
-              onClick={() => handleDeletePost(post._id)}
+              onClick={() => handleDeletePost(post)}
             >
               <span className="material-icons">delete_outline</span> Remove Post
             </div>
